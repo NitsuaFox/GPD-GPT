@@ -6,11 +6,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Etsy Product Listing Generator</title>
+    <title>GDP-GPT by Hogarth Studios</title>
 </head>
 <body>
+
     <div class="container">
-        <img src="{{ url_for('static', filename='etsylogo.png') }}" alt="Etsy Product Listing Generator" class="mt-5 logo">
+        <img src="{{ url_for('static', filename='etsylogo.png') }}" alt="GDP-GPT by Hogarth Studios" class="mt-5 logo">
         <form method="POST">
             <div class="form-group">
                 <label for="product_description">Product Description:</label>
@@ -59,6 +60,16 @@
                     <option>Really Enthusiastic like Stan out of Monkey Island</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="marketplace_style">Marketplace Style:</label>
+                <select class="form-control" id="marketplace_style" name="marketplace_style">
+                    <option>Amazon Marketplace</option>
+                    <option>Etsy</option>
+                    <option>eBay</option>
+                    <option>Shopify</option>
+                    <option>General</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-primary">Generate Listing</button>
         </form>
@@ -76,6 +87,10 @@
                 <p>{{ description }}</p>
             </div>
             <div class="result-block">
+                <p class="result-heading">Bullet Points:</p>
+                <p>{{ bullets|safe }}</p>
+            </div>            
+            <div class="result-block">
                 <p class="result-heading">Tags:</p>
                 <p>{{ tags }}</p>
             </div>
@@ -84,16 +99,24 @@
 
         <!-- User Input History -->
         {% if history %}
-        <div class="mt-5 history">
+        <div class="mt-5 generated-results">
             <h2>User Input History</h2>
             {% for entry in history %}
-            <div>
-                <p>Product Description: {{ entry.product_description }}</p>
-                <p>Writing Style: {{ entry.writing_style }}</p>
+            <div class="result-block">
+                <p class="result-heading">Product Description:</p>
+                <p>{{ entry.product_description }}</p>
+            </div>
+            <div class="result-block">
+                <p class="result-heading">Writing Style:</p>
+                <p>{{ entry.writing_style }}</p>
+            </div>
+            <div class="result-block">
+                <p class="result-heading">Marketplace Style:</p>
+                <p>{{ entry.marketplace_style }}</p>
             </div>
             {% endfor %}
         </div>
         {% endif %}
-    </div>
+
 </body>
 </html>

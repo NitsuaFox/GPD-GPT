@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #fdf7ed;
+  background-color: #b1e9ffd0;
 }
 
 .container {
@@ -51,6 +51,8 @@ button:hover {
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .history {
