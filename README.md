@@ -3,3 +3,5 @@ ETSY
 EbAY
 AMAZON
 SHOPIFY
+
+Powered by ChatGPT
