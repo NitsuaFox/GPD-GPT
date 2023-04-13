@@ -31,8 +31,8 @@ def index():
         session.modified = True
 
         messages = [
-            {"role": "system", "content": "You are a helpful assistant that generates product titles, descriptions, bullet points and tags in the following format: TITLE: ... | DESCRIPTION: ... | BULLETS: ... | TAGS: ..."},
-            {"role": "user", "content": f"Please be '{writing_style}' and generate the product title, description and five bullet points (prefixed by emoji and separated by '\\n') and tags (separated by commas) for the following product: {product_description}."}
+            {"role": "system", "content": "You are a very factual, verbose and helpful sales assistant that generates product titles, descriptions, bullet points and tags in the following format: TITLE: ... | DESCRIPTION: ... | BULLETS: ... | TAGS: ..."},
+            {"role": "user", "content": f"Please be '{writing_style}' and generate the product title, description and five bullet points (prefixed by emoji and separated by returns) and tags (separated by commas) for the following product: {product_description}."}
         ]
 
         for info in additional_info:
