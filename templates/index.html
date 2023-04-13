@@ -1,21 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>OpenAI Quickstart</title>
-  <link
-    rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
-  />
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Etsy Product Listing Generator</title>
 </head>
-
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
-  <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
-  </form>
-  {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}
+    <div class="container">
+        <img src="{{ url_for('static', filename='etsylogo.png') }}" alt="Etsy Product Listing Generator" class="mt-5 logo">
+        <form method="POST">
+            <div class="form-group">
+                <label for="product_description">Product Description:</label>
+                <input type="text" class="form-control" id="product_description" name="product_description" placeholder="Enter a brief product description" required>
+
+            </div>
+            <div class="form-group">
+              <label>Additional Information:</label><br>
+              <input type="checkbox" id="3d_printed" name="additional_info" value="Item is 3D Printed">
+              <label for="3d_printed">Item is 3D Printed</label>
+              <input type="checkbox" id="worldwide_shipping" name="additional_info" value="Item is shipped worldwide">
+              <label for="worldwide_shipping">Item is shipped worldwide</label>
+              <input type="checkbox" id="free_postage" name="additional_info" value="Free Postage">
+              <label for="free_postage">Free Postage</label>
+              <input type="checkbox" id="handmade" name="additional_info" value="Handmade">
+              <label for="handmade">Handmade</label>
+              <input type="checkbox" id="designed_by_us" name="additional_info" value="Designed by Me/Us">
+              <label for="designed_by_us">Designed by Me/Us</label>
+              <input type="checkbox" id="personalised" name="additional_info" value="Personalised">
+              <label for="personalised">Personalised</label>
+              <input type="checkbox" id="inspired_by" name="additional_info" value="Inspired by">
+              <label for="inspired_by">Inspired by</label>
+              <input type="checkbox" id="gift_item" name="additional_info" value="Gift Item">
+              <label for="gift_item">Gift Item</label>
+              <input type="checkbox" id="great_for_kids" name="additional_info" value="Great for Kids">
+              <label for="great_for_kids">Great for Kids</label>
+              <input type="checkbox" id="great_for_gifts" name="additional_info" value="Great for Gifts">
+              <label for="great_for_gifts">Great for Gifts</label>
+              <input type="checkbox" id="boy" name="additional_info" value="Boy">
+              <label for="boy">Boy</label>
+              <input type="checkbox" id="girl" name="additional_info" value="Girl">
+              <label for="girl">Girl</label>
+              <input type="checkbox" id="women" name="additional_info" value="Women">
+              <label for="women">Women</label>
+              <input type="checkbox" id="men" name="additional_info" value="Men">
+              <label for="men">Men</label>
+              <input type="checkbox" id="special_occasion" name="additional_info" value="Special Occasion">
+              <label for="special_occasion">Special Occasion</label>
+          </div>
+          
+            <div class="form-group">
+                <label for="writing_style">Writing Style:</label>
+                <select class="form-control" id="writing_style" name="writing_style">
+                    <option>Witty, Fun, Engaging</option>
+                    <option>Factual, Straight to the point</option>
+                    <option>Really Enthusiastic like Stan out of Monkey Island</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Generate Listing</button>
+        </form>
+
+        <!-- Generated Results -->
+        {% if title and description and tags %}
+        <div class="mt-5 generated-results">
+            <h2>Generated Results</h2>
+            <div class="result-block">
+                <p class="result-heading">Title:</p>
+                <p>{{ title }}</p>
+            </div>
+            <div class="result-block">
+                <p class="result-heading">Description:</p>
+                <p>{{ description }}</p>
+            </div>
+            <div class="result-block">
+                <p class="result-heading">Tags:</p>
+                <p>{{ tags }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- User Input History -->
+        {% if history %}
+        <div class="mt-5 history">
+            <h2>User Input History</h2>
+            {% for entry in history %}
+            <div>
+                <p>Product Description: {{ entry.product_description }}</p>
+                <p>Writing Style: {{ entry.writing_style }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </body>
+</html>
