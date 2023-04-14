@@ -5,11 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>GDP-GPT by Hogarth Studios</title>
 </head>
 <body>
-
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">
+        <i class="fas fa-bars"></i>
+    </label>
+    <div class="sidebar">
+        <h3>workmate.ai</h3>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search tools..." />
+        </div>
+        <ul id="tools-menu">
+            <li>
+                <h4>Marketplace</h4>
+                <ul>
+                    <li><a href="#" class="tool-link" data-tool="ProductLister">Product Lister</a></li>
+                    <!-- Add more text analysis tools here -->
+                </ul>
+            </li>
+            <li>
+                <h4>IT Support</h4>
+                <ul>
+                    <li><a href="#" class="tool-link" data-tool="aiitanaylst">ai IT Analyst</a></li>
+                </ul>
+            </li>
+            <!-- Add more categories here -->
+        </ul>
+    </div>
+    <script>
+        document.getElementById('search-input').addEventListener('input', function (e) {
+            const searchQuery = e.target.value.toLowerCase();
+            const toolLinks = document.getElementsByClassName('tool-link');
+    
+            for (const link of toolLinks) {
+                const toolName = link.textContent.toLowerCase();
+                const listItem = link.parentElement;
+    
+                if (toolName.includes(searchQuery)) {
+                    listItem.style.display = 'list-item';
+                } else {
+                    listItem.style.display = 'none';
+                }
+            }
+        });
+    </script>
+    
+<div class="main-content">
     <div class="container">
         <img src="{{ url_for('static', filename='etsylogo.png') }}" alt="GDP-GPT by Hogarth Studios" class="mt-5 logo">
         <form method="POST">
@@ -119,6 +164,8 @@
             {% endfor %}
         </div>
         {% endif %}
-
+    </div>    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

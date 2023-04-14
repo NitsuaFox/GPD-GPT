@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #d8e0f2d0;
+  background-color: #cececed0;
 }
 
 .container {
@@ -22,11 +22,11 @@ h2 {
 h3 {
   margin-top: 20px;
   margin-bottom: 10px;
-  color: #4a4a4a;
+  color: #dddddd;
 }
 
 form {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -37,13 +37,13 @@ form {
 }
 
 button {
-  background-color: #db9834;
-  border-color: #db3434;
+  background-color: #656565;
+  border-color: #313131;
 }
 
 button:hover {
-  background-color: #2980b9;
-  border-color: #2980b9;
+  background-color: #708898;
+  border-color: #606060;
 }
 
 .generated-results {
@@ -67,10 +67,10 @@ li {
 }
 
 .logo {
-  max-width: 100%;
+  max-width: 70%;
   height: auto;
   display: block;
-  margin: 30px 0;
+  margin: 50px 0;
 }
 .checkbox-container input[type="checkbox"],
 .checkbox-container label {
@@ -92,4 +92,91 @@ li {
   font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 5px;
+}
+/* Hamburger Menu styles */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background-color: #313131;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.menu-icon i {
+  font-size: 24px;
+  color: #fff;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #313131;
+  padding: 30px 0;
+  transition: left 0.5s ease;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
+.sidebar li a:hover {
+  background-color: #282828;
+  color: #fff;
+  width: 100%;
+}
+
+.sidebar ul ul {
+  padding-left: 20px;
+}
+
+#menu-toggle:checked + .menu-icon + .sidebar {
+  left: 0;
+}
+
+#menu-toggle:checked ~ .container {
+  margin-left: 0;
+  position: relative;
+  left: 250px;
+}
+
+.main-content {
+  transition: transform 1s ease;
+}
+
+#menu-toggle:checked ~ .main-content {
+  transform: translateX(50px);
+}
+
+.search-bar {
+margin-bottom: 20px;
+}
+
+.search-bar input {
+width: 100%;
+padding: 8px;
+border-radius: 4px;
+border: 1px solid #ccc;
+}
+
+.tools-menu h4 {
+margin-top: 20px;
+margin-bottom: 10px;
 }
