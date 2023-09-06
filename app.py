@@ -7,8 +7,7 @@ from flask import Flask, redirect, render_template, request, url_for, session
 app = Flask(__name__)
 app.secret_key = "super_secret_key"
 app.permanent_session_lifetime = timedelta(days=30)
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
+openai.api_key = "ENTER KEY HERE"
 @app.route("/", methods=("GET", "POST"))
 def index():
     if request.method == "POST":
